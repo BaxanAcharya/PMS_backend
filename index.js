@@ -21,6 +21,14 @@ mongoose.connect(process.env.URL,{useNewUrlParser:true,useUnifiedTopology:true, 
     console.log("Successfully connected to Mongodb Server")
 },(err)=>console.log(err));
 
+
+//handling global error
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.statusCode = 500;
+    res.json({ status: err.message });
+});
+
 //to start the backend at defined port no
 app.listen(process.env.PORT,()=>{
     console.log(`App is running at localhost:${process.env.PORT}`);
