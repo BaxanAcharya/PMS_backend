@@ -3,6 +3,7 @@ const dotenv=require('dotenv').config()
 const mongoose=require('mongoose');
 const morgan=require('morgan');
 const cors=require('cors');
+const userRoute=require('./routes/user');
 
 const app=express();
 
@@ -20,6 +21,9 @@ mongoose.connect(process.env.URL,{useNewUrlParser:true,useUnifiedTopology:true, 
 .then((db)=>{
     console.log("Successfully connected to Mongodb Server")
 },(err)=>console.log(err));
+
+//apis
+app.use('/users',userRoute);
 
 
 //handling global error
