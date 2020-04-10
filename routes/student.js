@@ -18,5 +18,15 @@ route.post('/add',(req,res,next)=>{
         }
     }).catch(next)
 })
+
+//get all students
+route.get("/all", (req,res,next) => {
+    Student.find().sort({firstname:'desc'})
+    .then(posts => {
+        res.status(200)
+        res.json({status:200, message:posts})
+    })
+    .catch(next)
+})
 module.exports = route;
 

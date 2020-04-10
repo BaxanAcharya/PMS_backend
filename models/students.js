@@ -110,8 +110,7 @@ lock:{
     type:Boolean
 },
 symbol_no:{
-    type:String,
-    required:true
+    type:String
 },
 image:{
     type:String
