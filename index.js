@@ -3,6 +3,7 @@ const dotenv=require('dotenv').config()
 const mongoose=require('mongoose');
 const morgan=require('morgan');
 const auth=require('./routes/auth') 
+const uploadRoute=require('./routes/uploadStudentImage');
 const cors=require('cors');
 const userRoute=require('./routes/user');
 const studentRoute=require('./routes/student')
@@ -27,6 +28,7 @@ mongoose.connect(process.env.URL,{useNewUrlParser:true,useUnifiedTopology:true, 
 //apis
 app.use('/users',userRoute);
 app.use('/students',auth.verifyUser ,studentRoute);
+app.use('/uploadStudent', auth.verifyUser, uploadRoute);
 
 //handling global error
 app.use((err, req, res, next) => {
