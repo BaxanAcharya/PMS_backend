@@ -22,9 +22,9 @@ route.post('/add',(req,res,next)=>{
 //get all students
 route.get("/all", (req,res,next) => {
     Student.find().sort({firstname:'asc'})
-    .then(posts => {
+    .then(students => {
         res.status(200)
-        res.json({status:200, message:posts})
+        res.json({status:200, message:students})
     })
     .catch(next)
 })
@@ -32,10 +32,28 @@ route.get("/all", (req,res,next) => {
 //get student by id
 route.get('/:id', (req,res,next)=>{
     Student.findById(req.params.id)
-    .then((post)=>{
+    .then((student)=>{
         res.status(200)
-        res.json({status:200, message:post})
+        res.json({status:200, message:student})
     }).catch(next)
 })
+
+//delete student
+route.delete('/:id',(req, res, next) => {
+    Student.findByIdAndDelete(req.params.id)
+        .then((students) => {
+            res.status(200)
+            res.json({status:200, message:'deleted'});
+        }).catch(next);
+});
+
+//edit student
+route.put('/:id',(req, res, next) => {
+    Student.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
+        .then((student) => {
+            res.json(student);
+        }).catch(next)
+    });
+
 module.exports = route;
 
