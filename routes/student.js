@@ -3,7 +3,7 @@ const Student=require('../models/students');
 const route=express.Router();
 
 //add student
-route.post('/addStudent',(req,res,next)=>{
+route.post('/add',(req,res,next)=>{
     Student.findOne({symbol_no:req.body.symbol_no})
     .then((student)=>{
         if(student==null){
@@ -19,3 +19,4 @@ route.post('/addStudent',(req,res,next)=>{
     }).catch(next)
 })
 module.exports = route;
+

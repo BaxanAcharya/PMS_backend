@@ -2,6 +2,7 @@ const express=require('express');
 const dotenv=require('dotenv').config()
 const mongoose=require('mongoose');
 const morgan=require('morgan');
+const auth=require('./routes/auth') 
 const cors=require('cors');
 const userRoute=require('./routes/user');
 const studentRoute=require('./routes/student')
@@ -25,7 +26,7 @@ mongoose.connect(process.env.URL,{useNewUrlParser:true,useUnifiedTopology:true, 
 
 //apis
 app.use('/users',userRoute);
-app.use('/students',studentRoute)
+app.use('/students',auth.verifyUser ,studentRoute);
 
 //handling global error
 app.use((err, req, res, next) => {

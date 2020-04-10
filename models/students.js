@@ -1,5 +1,4 @@
 const mongoose=require('mongoose');
-const date=new Date()
 const studentSchema=new mongoose.Schema({
 firstname:{
     type:String,
@@ -38,7 +37,7 @@ birth_place:{
 admission_date:{
     type:Date,
     required:true,
-    default:date.getDate
+    default:Date.now
 },
 address:{
     type:String,
