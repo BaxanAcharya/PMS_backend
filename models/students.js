@@ -37,7 +37,6 @@ birth_place:{
 admission_date:{
     type:Date,
     required:true,
-    default:Date.now
 },
 address:{
     type:String,

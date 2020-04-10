@@ -21,12 +21,21 @@ route.post('/add',(req,res,next)=>{
 
 //get all students
 route.get("/all", (req,res,next) => {
-    Student.find().sort({firstname:'desc'})
+    Student.find().sort({firstname:'asc'})
     .then(posts => {
         res.status(200)
         res.json({status:200, message:posts})
     })
     .catch(next)
+})
+
+//get student by id
+route.get('/:id', (req,res,next)=>{
+    Student.findById(req.params.id)
+    .then((post)=>{
+        res.status(200)
+        res.json({status:200, message:post})
+    }).catch(next)
 })
 module.exports = route;
 
