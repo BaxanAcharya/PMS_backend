@@ -1,0 +1,122 @@
+const mongoose=require('mongoose');
+const date=new Date()
+const studentSchema=new mongoose.Schema({
+firstname:{
+    type:String,
+    required:true
+},
+lastname:{
+    type:String,
+    required:true
+},
+class:{
+    type:String,
+    required:true
+},
+cast:{
+    type:String
+},
+section:{
+    type:String,
+    required:true
+},
+roll_no:{
+    type:Number,
+    required:true
+},
+sex:{
+    type:String,
+    required:true
+},
+dob:{
+    type:String,
+    required:true
+},
+birth_place:{
+    type:String
+},
+admission_date:{
+    type:Date,
+    required:true,
+    default:date.getDate
+},
+address:{
+    type:String,
+    required:true
+},
+citizen:{
+    type:String,
+    required:true,
+    default:'Nepali'
+},
+facuilty:{
+    type:String,
+    required:true
+},
+tel_no:{
+    type:String,
+    length:10
+},
+father_name:{
+    type:String,
+    required:true
+},
+father_occupation:{
+    type:String
+},
+father_religion:{
+    type:String
+},
+father_nationality:{
+    type:String
+},
+mother_name:{
+    type:String,
+    required:true
+},
+mother_occupation:{
+    type:String
+},
+mother_religion:{
+    type:String
+},
+mother_nationality:{
+    type:String
+},
+pre_school:{
+    type:String
+},
+pre_class:{
+    type:String
+},
+remarks:{
+    type:String
+},
+devnagari:{
+    type:String
+},
+bus_stop:{
+    type:String
+},
+sdb:{
+    type:String
+},
+deposit:{
+    type:Number
+},
+scholarship:{
+    type:Number
+},
+lock:{
+    type:Boolean
+},
+symbol_no:{
+    type:String,
+    required:true
+},
+image:{
+    type:String
+}
+})
+
+module.exports = mongoose.model('Student', studentSchema);

@@ -4,6 +4,7 @@ const mongoose=require('mongoose');
 const morgan=require('morgan');
 const cors=require('cors');
 const userRoute=require('./routes/user');
+const studentRoute=require('./routes/student')
 
 const app=express();
 
@@ -24,7 +25,7 @@ mongoose.connect(process.env.URL,{useNewUrlParser:true,useUnifiedTopology:true, 
 
 //apis
 app.use('/users',userRoute);
-
+app.use('/students',studentRoute)
 
 //handling global error
 app.use((err, req, res, next) => {
